@@ -1,0 +1,6 @@
+${AnsiColor.BRIGHT_WHITE},--. ,--. ,--.   ,--.  ,-----.          ,-.
+${AnsiColor.BRIGHT_WHITE}|  .'   / |   `.'   | '  .-.  '   .--.  '. \
+${AnsiColor.BRIGHT_RED}|  .   '  |  |'.'|  | |  | |  |   '--'   |  |
+${AnsiColor.BRIGHT_RED}|  |\   \ |  |   |  | '  '-'  '   .--.   |  |
+${AnsiColor.BRIGHT_WHITE}`--' '--' `--'   `--'  `-----'    '--'  .' /
+${AnsiColor.BRIGHT_WHITE}                                        `-'
