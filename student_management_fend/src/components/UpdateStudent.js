@@ -4,7 +4,7 @@ import {useHistory} from "react-router-dom";
 
 
 const URL = 'http://localhost:8080/api/v1/students';
-function AddStudent(props){
+function UpdateStudent(props){
 
     const[firstname,setFirstname] = useState("");
     const[lastname,setLastname] = useState("");
@@ -20,7 +20,7 @@ function AddStudent(props){
             pathname:`/`,
         })
     }
-    function saveData(){
+    function UpdateData(){
         let data = {firstname,lastname,email}
         fetch(URL,{
             method:"POST",
@@ -36,11 +36,11 @@ function AddStudent(props){
         })
     }
 
-    return(`
-        <h1>ADD STUDENT SCREEN</h1>
+    return(
+`
         <div className = "container">
             <button onClick={backButton}>Back to the main screen</button>
-        <form>
+            <form>
                 <label> Firstname </label>
                 <input className="w-50 p-3"
                        type="text"
@@ -62,10 +62,10 @@ function AddStudent(props){
                        value={email}
                        onChange={(e)=>{setEmail(e.target.value)}}
                        placeholder="Enter your email... "/>
-            <button type="submit" className="btn btn-primary mt-lg-2" onClick={saveData}>Submit</button>
-        </form>
+                <button type="submit" className="btn btn-primary mt-lg-2" onClick={saveData}>Submit</button>
+            </form>
         </div>
-    `)
+ `   )
 }
 
-export default AddStudent
+export default UpdateStudent

@@ -24,6 +24,12 @@ function StudentComponent(props) {
         })
     }
 
+    const handleUpdateStudent = async ()=>{
+        await history.push({
+            pathname:`/update-student`,
+        })
+    }
+
     const removeData = (id) => {
         axios.delete(`${URL}/${id}`).then(res => {
             const del = students.filter(student => id !== student.id)
@@ -56,10 +62,10 @@ function StudentComponent(props) {
                                 <td> {student.firstname}</td>
                                 <td> {student.lastname}</td>
                                 <td> {student.email}</td>
-                                <td>
-                                    <button type="button" className="btn btn-info">Edit</button>
+                                <td className='operation'>
+                                    <button type="button" className="btn btn-info" onClick={()=>handleUpdateStudent(student.id)}>Edit</button>
                                 </td>
-                                <td className='opration'>
+                                <td className='operation'>
                                     <button type="button" className="btn btn-danger" onClick={() => removeData(student.id)}>Delete</button>
                                 </td>
                             </tr>
