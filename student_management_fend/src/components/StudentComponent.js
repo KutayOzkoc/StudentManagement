@@ -9,7 +9,6 @@ function StudentComponent(props) {
     const [students, setStudents] = useState([])
     const history = useHistory();
     useEffect(() => {
-        console.log("1")
         getData()
     }, [])
 
@@ -24,9 +23,9 @@ function StudentComponent(props) {
         })
     }
 
-    const handleUpdateStudent = async ()=>{
+    const handleUpdateStudent = async (studentId)=>{
         await history.push({
-            pathname:`/update-student`,
+            pathname:'/update-student' +"/"+ studentId,
         })
     }
 
@@ -36,6 +35,8 @@ function StudentComponent(props) {
             setStudents(del)
         })
     }
+
+
 
 
     return (

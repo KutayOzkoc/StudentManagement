@@ -12,7 +12,7 @@ function App() {
                 <Switch>
                     <Route exact path="/" component={StudentComponent}/>
                     <Route exact path="/create-student"  component={AddStudent}/>
-                    <Route exact path="/update-student"  component={UpdateStudent}/>
+                    <Route exact path="/update-student/:id"  component={UpdateStudent}/>
                 </Switch>
         </div>
         </BrowserRouter>
