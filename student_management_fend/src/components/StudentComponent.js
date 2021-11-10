@@ -23,9 +23,10 @@ function StudentComponent(props) {
         })
     }
 
-    const handleUpdateStudent = async (studentId)=>{
+    const handleUpdateStudent = async (student,id)=>{
         await history.push({
-            pathname:'/update-student' +"/"+ studentId,
+            pathname:'/update-student' +"/"+ student.id,
+            state:{id:id,firstname:student.firstname, lastname: student.lastname, email: student.email}
         })
     }
 
@@ -64,7 +65,7 @@ function StudentComponent(props) {
                                 <td> {student.lastname}</td>
                                 <td> {student.email}</td>
                                 <td className='operation'>
-                                    <button type="button" className="btn btn-info" onClick={()=>handleUpdateStudent(student.id)}>Edit</button>
+                                    <button type="button" className="btn btn-info" onClick={()=>handleUpdateStudent(student,student.id)}>Edit</button>
                                 </td>
                                 <td className='operation'>
                                     <button type="button" className="btn btn-danger" onClick={() => removeData(student.id)}>Delete</button>
