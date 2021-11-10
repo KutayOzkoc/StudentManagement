@@ -1,19 +1,17 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import {useHistory} from "react-router-dom";
-import {nanoid} from 'nanoid';
-import axios from "axios";
+
 
 
 const URL = 'http://localhost:8080/api/v1/students';
 function AddStudent(props){
 
-    const [students,setStudents] = useState(data);
-    const [addStudent,setAddStudentData] = useState({
-        firstname:"",
-        lastname:"",
-        email:"",
-    })
+    const[firstname,setFirstname] = useState("");
+    const[lastname,setLastname] = useState("");
+    const[email,setEmail] = useState("");
+
     const history = useHistory();
+
     useEffect(()=>{
     },[])
 
@@ -22,58 +20,49 @@ function AddStudent(props){
             pathname:`/`,
         })
     }
-    const handleAddFormChange = (event) =>{
-        event.preventDefault();
-        const fieldName = event.target.getAttribute('name');
-        const fieldValue = event.target.value;
-        const newFormData = {...addStudent};
-        newFormData[fieldName] = fieldValue;
-        setAddStudentData(newFormData);
-    }
-    const handleAddButton =(event) =>{
-        event.preventDefault();
-        const newStudent = {
-            id: nanoid(),
-            firstname:addStudent.firstname,
-            lastname:addStudent.lastname,
-            email:addStudent.email,
-        }
-        const newStudents = [...students,newStudent];
+    function saveData(){
+        let data = {firstname,lastname,email}
+        fetch(URL,{
+            method:"POST",
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(data)
+        }).then((resp)=>{
+            resp.json().then((result)=>{
+                console.warn("result",result);
+            })
+        })
     }
 
     return(
 
         <div className = "container">
             <button onClick={backButton}>Back to the main screen</button>
-        <form onSubmit={handleAddButton}>
-            <div class="form-group">
+        <form>
                 <label> Firstname </label>
-                <input class="w-50 p-3"
+                <input className="w-50 p-3"
                        type="text"
-                       class="form-control"
-                       id="firstname"
-                       onChange={handleAddFormChange}
+                       name="firstname"
+                       value={firstname}
+                       onChange={(e)=>{setFirstname(e.target.value)}}
                        placeholder="Enter your first name... " />
-            </div>
-            <div className="form-group">
                 <label> Lastname </label>
-                <input class="w-50 p-3"
+                <input className="w-50 p-3"
                        type="text"
-                       className="form-control"
-                       id="lastname"
-                       onChange={handleAddFormChange}
+                       name="lastname"
+                       value={lastname}
+                       onChange={(e)=>{setLastname(e.target.value)}}
                        placeholder="Enter your last name... "/>
-            </div>
-            <div className="form-group">
                 <label> email </label>
                 <input className="w-50 p-3"
                        type="text"
-                       className="form-control"
-                       id="email"
-                       onChange={handleAddFormChange}
+                       name="email"
+                       value={email}
+                       onChange={(e)=>{setEmail(e.target.value)}}
                        placeholder="Enter your email... "/>
-            </div>
-            <button type="submit" className="btn btn-primary mt-lg-2">Submit</button>
+            <button type="submit" className="btn btn-primary mt-lg-2" onClick={saveData}>Submit</button>
         </form>
         </div>
     )
