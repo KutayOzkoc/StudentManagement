@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
-import {useNavigate} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 
 const URL = 'http://localhost:8080/api/v1/students';
 
 function StudentComponent(props) {
     const [students, setStudents] = useState([])
-    const navigate = useNavigate();
+    const history = useHistory();
     useEffect(() => {
+        console.log("1")
         getData()
     }, [])
 
@@ -17,8 +18,8 @@ function StudentComponent(props) {
         setStudents(response.data)
     }
 
-    const handleAddStudent =()=>{
-        navigate.push({
+    const handleAddStudent = async ()=>{
+        await history.push({
             pathname:`/create-student`,
         })
     }
