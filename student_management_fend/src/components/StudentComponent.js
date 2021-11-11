@@ -29,6 +29,12 @@ function StudentComponent(props) {
         })
     }
 
+    const CoronaScreen = async ()=>{
+        await history.push({
+            pathname:'/corona-screen'
+        })
+    }
+
     const removeData = (id) => {
         axios.delete(`${URL}/${id}`).then(res => {
             const del = students.filter(student => id !== student.id)
@@ -37,12 +43,10 @@ function StudentComponent(props) {
     }
 
 
-
-
     return (
         <div>
-            <button type="button" className="btn btn-success d-flex" style={{"justify-item":'center'}} onClick={handleAddStudent}>Add Student</button>
-
+            <button type="button" className="btn btn-danger d-inline-block mt-lg-2"  style={{"margin-left":"20px"}} onClick={CoronaScreen}>Corona Screen</button>
+            <button type="button" className="btn btn-success d-inline-block mt-lg-2 " style={{"margin-left":"20px"}}  onClick={handleAddStudent}>Add Student</button>
             <table className="table table-striped">
                 <thead>
                 <tr>
