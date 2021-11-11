@@ -39,7 +39,7 @@ function AddStudent(props){
     return(
         <div className = "container">
             <h1>ADD STUDENT SCREEN</h1>
-            <button onClick={backButton} className="btn btn-warning mt-lg-2">Back to the main screen</button>
+            <button onClick={backButton} className="btn btn-warning mt-lg-2 mb-2">Back to the main screen</button>
         <form>
                 <input className="w-33 p-3"
                        type="text"
@@ -61,6 +61,7 @@ function AddStudent(props){
                        value={email}
                        onChange={(e)=>{setEmail(e.target.value)}}
                        placeholder="Enter your email... "/>
+                       <br/>
             <button type="submit" className="btn btn-primary mt-lg-2" onClick={saveData}>Submit</button>
         </form>
         </div>

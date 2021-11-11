@@ -33,7 +33,8 @@ function UpdateStudent(props){
 
     return(
         <div className = "container">
-            <button onClick={backButton} className="btn btn-warning mt-lg-2">Back to the main screen</button>
+            <h1>Update Student Screen</h1>
+            <button onClick={backButton} className="btn btn-warning mt-lg-2 mb-2">Back to the main screen</button>
             <form>
                 <input className="w-33 p-3"
                        type="text"
@@ -53,6 +54,7 @@ function UpdateStudent(props){
                        value={email}
                        onChange={(e)=>{setEmail(e.target.value)}}
                        placeholder={props?.history?.location?.state?.email}/>
+                       <br/>
                 <button type="submit" className="btn btn-primary mt-lg-2" onClick={UpdateData}>Submit</button>
             </form>
         </div>

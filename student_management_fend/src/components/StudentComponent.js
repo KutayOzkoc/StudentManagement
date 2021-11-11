@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {useHistory} from 'react-router-dom';
 
-
 const URL = 'http://localhost:8080/api/v1/students';
 
 function StudentComponent(props) {
@@ -42,8 +41,8 @@ function StudentComponent(props) {
 
     return (
         <div>
-            <h1 className="text-center"> Student List</h1>
-            <button type="button" className="btn btn-success" onClick={handleAddStudent}>Add Student</button>
+            <button type="button" className="btn btn-success d-flex" style={{"justify-item":'center'}} onClick={handleAddStudent}>Add Student</button>
+
             <table className="table table-striped">
                 <thead>
                 <tr>
