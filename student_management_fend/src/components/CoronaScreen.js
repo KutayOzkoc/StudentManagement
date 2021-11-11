@@ -8,8 +8,10 @@ function CoronaScreen(props){
     const fetchData = () => {
         return axios.get("https://raw.githubusercontent.com/ozanerturk/covid19-turkey-api/master/dataset/timeline.json")
             .then((response) =>{
-                console.log(response.data[covDate].patients)
+                setCovDate(response.data);
             });}
+
+
     return (
         <div>
 
@@ -20,7 +22,30 @@ function CoronaScreen(props){
                    onChange={(e)=>{setCovDate(e.target.value)}}
                    placeholder="Tarih değerini giriniz (örn: 10/10/2020)" />
             <button onClick={fetchData} className="btn btn-primary mt-lg-2 ml-2 d-inline-block"> DATA BUTTON</button>
-        </div>
+
+            <table className="table table-striped">
+                <thead>
+                <tr>
+                    <td> DATE </td>
+                    <td> CASES </td>
+                    <td> DEATHS (DAILY) </td>
+                    <td> RECOVEREDS </td>
+                    <td> TOTAL DEATHS </td>
+                </tr>
+                </thead>
+                <tbody>
+                {
+                            <tr>
+                                <td> {covDate.date}</td>
+                                <td> {covDate.patients}</td>
+                                <td> {covDate.deaths}</td>
+                                <td> {covDate.totalRecoverd}</td>
+                                <td> {covDate.totalDeaths}</td>
+                            </tr>
+                }
+                </tbody>
+            </table>
+       </div>
     )
 
 }
