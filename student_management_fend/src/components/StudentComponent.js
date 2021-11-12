@@ -5,6 +5,34 @@ import {useHistory} from 'react-router-dom';
 const URL = 'http://localhost:8080/api/v1/students';
 
 function StudentComponent(props) {
+
+    const [playing, setPlaying] = useState(false);
+
+    const HEIGHT = 500;
+    const WIDTH = 500;
+
+    const startVideo = () => {
+        setPlaying(true);
+        navigator.getUserMedia(
+            {
+                video: true,
+            },
+            (stream) => {
+                let video = document.getElementsByClassName('app__videoFeed')[0];
+                if (video) {
+                    video.srcObject = stream;
+                }
+            },
+            (err) => console.error(err)
+        );
+    };
+
+    const stopVideo = () => {
+        setPlaying(false);
+        let video = document.getElementsByClassName('app__videoFeed')[0];
+        video.srcObject.getTracks()[0].stop();
+    };
+
     const [students, setStudents] = useState([])
     const history = useHistory();
     useEffect(() => {
@@ -51,6 +79,20 @@ function StudentComponent(props) {
 
     return (
         <div>
+                <video
+                    height={HEIGHT-150}
+                    width={WIDTH-150}
+                    muted
+                    autoPlay
+                    className="app__videoFeed container-fluid d-flex justify-content-center mt-2 mb-2"
+                ></video>
+            <div className="app__input">
+                {playing ? (
+                    <button onClick={stopVideo} className="container-fluid d-flex justify-content-center btn btn-danger w-50 mt-2">Stop</button>
+                ) : (
+                    <button onClick={startVideo} className="container-fluid d-flex justify-content-center btn btn-outline-primary w-50 mt-2">Start</button>
+                )}
+            </div>
             <button type="button" className="btn btn-danger d-inline-block mt-lg-2"  style={{"margin-left":"20px"}} onClick={CoronaScreen}>Corona Screen</button>
             <button type="button" className="btn btn-danger d-inline-block mt-lg-2"  style={{"margin-left":"20px"}} onClick={RandomNameGenerator}>Random Name Generator Page</button>
             <button type="button" className="btn btn-success d-inline-block mt-lg-2 " style={{"margin-left":"20px"}}  onClick={handleAddStudent}>Add Student</button>
