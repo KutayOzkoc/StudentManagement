@@ -63,6 +63,7 @@ function StudentComponent(props) {
         })
     }
 
+
     const RandomNameGenerator = async ()=>{
         await history.push({
             pathname:'/random-gen'
@@ -79,6 +80,7 @@ function StudentComponent(props) {
 
     return (
         <div>
+            <h1 className="container-fluid justify-content-center d-flex">Ayna Programı</h1>
                 <video
                     height={HEIGHT-150}
                     width={WIDTH-150}
@@ -88,9 +90,9 @@ function StudentComponent(props) {
                 ></video>
             <div className="app__input">
                 {playing ? (
-                    <button onClick={stopVideo} className="container-fluid d-flex justify-content-center btn btn-danger w-50 mt-2">Stop</button>
+                    <button onClick={stopVideo} className="container-fluid d-flex justify-content-center btn btn-outline-danger w-25 mt-2">Stop</button>
                 ) : (
-                    <button onClick={startVideo} className="container-fluid d-flex justify-content-center btn btn-outline-primary w-50 mt-2">Start</button>
+                    <button onClick={startVideo} className="container-fluid d-flex justify-content-center btn btn-outline-primary w-25 mt-2">Start</button>
                 )}
             </div>
             <button type="button" className="btn btn-danger d-inline-block mt-lg-2"  style={{"margin-left":"20px"}} onClick={CoronaScreen}>Corona Screen</button>
