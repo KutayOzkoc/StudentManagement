@@ -4,7 +4,6 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import AddStudent from "../src/components/AddStudent";
 import UpdateStudent from "./components/UpdateStudent";
-import CoronaScreen from "./components/CoronaScreen";
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
         <Route exact path="/" component={StudentComponent} />
         <Route exact path="/create-student" component={AddStudent} />
         <Route exact path="/update-student/:id" component={UpdateStudent} />
-          <Route exact path="/corona-screen/" component={CoronaScreen} />
       </Switch>
     </BrowserRouter>
   );
